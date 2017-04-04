@@ -1,0 +1,19 @@
+﻿@using System.Web.Optimization
+
+
+
+@{
+    ViewBag.Title = "Welcome";
+}
+
+    @Scripts.Render("~/bundles/custom")
+
+<h2>Welcome</h2>
+<h4>Hello @ViewBag.User</h4>
+<h3> @Html.ActionLink("LogOut", "LogOut", "User")</h3>
+<h3 onclick="TestFunction()"><a href="#">Something</a>
+</h3>
+
+
+
+
