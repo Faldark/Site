@@ -12,7 +12,7 @@
 @using (Html.BeginForm())
     {
 
-    @Html.AntiForgeryToken()
+    @*@Html.AntiForgeryToken()*@
 
     <div class="form-horizontal">
         <h4>Post</h4>
@@ -38,11 +38,13 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                
                 <input type="submit" value="Create" class="btn btn-default" onclick="CreatePost()"/>
             </div>
         </div>
     </div>
 }
+<button onclick="CreatePost()">Create</button>
 
 @*<div>
     @Html.ActionLink("Back to Posts", "Index")
