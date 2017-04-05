@@ -11,7 +11,7 @@ namespace MyOwnSite.Models
     {
         [Key]
         public int PostId { get; set; }
-        [Required]
+        
         [ForeignKey("User")]
         public int UserId { get; set; }
 
@@ -22,7 +22,7 @@ namespace MyOwnSite.Models
         [StringLength(5000)]
         [DataType(DataType.MultilineText)]
         public string Message { get; set; }
-        [Required]
+        
         public DateTime CreatedOn { get; set; }
 
 

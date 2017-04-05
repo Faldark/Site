@@ -55,34 +55,34 @@ namespace MyOwnSite.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
-            //return PartialView("_Create");
+            return PartialView("Create");
+            
         }
 
         // POST: /Post/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        
-        //public ActionResult Create([Bind(Include = "PostId,Id,Title,Message")] Post post)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
+        [HttpPost]
+        [ValidateAntiForgeryToken]
 
-        //        var name = System.Web.HttpContext.Current.User.Identity.Name;
+        public ActionResult Create( Post post)
+        {
+            if (ModelState.IsValid)
+            {
 
-        //        var user = UserService.FindUserByLogin(name);
+                var name = System.Web.HttpContext.Current.User.Identity.Name;
 
-        //        post.UserId = user.UserId;
+                var user = UserService.FindUserByLogin(name);
 
-        //        PostService.Insert(post);
+                post.UserId = user.UserId;
 
-        //        return RedirectToAction("Index");
-        //    }
+                PostService.Insert(post);
 
-        //    return View(post);
-        //}
+                return RedirectToAction("Index");
+            }
+
+            return View(post);
+        }
 
         // GET: /Post/Edit/5
         public ActionResult Edit(int id)

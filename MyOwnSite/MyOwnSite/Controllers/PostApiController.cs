@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -32,8 +33,9 @@ namespace MyOwnSite.Controllers
 
         public IUserService UserService { get; set; }
 
-
-        [System.Web.Http.HttpPost]
+        
+        [ValidateAntiForgeryToken]
+        
         public HttpResponseMessage Post( Post post)
         {
             if (ModelState.IsValid)
@@ -50,7 +52,19 @@ namespace MyOwnSite.Controllers
                 return new HttpResponseMessage(HttpStatusCode.Created);
             }
 
-            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            var errors = new List<string>();
+            foreach (var state in ModelState)
+            {
+                foreach (var error in state.Value.Errors)
+                {
+                    errors.Add(error.ErrorMessage);
+                }
+            }
+            return Request.CreateResponse(HttpStatusCode.Forbidden, errors);
+
+
+
+            //return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
         [System.Web.Http.HttpGet]
         public List<Post> Get()

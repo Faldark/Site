@@ -1,21 +1,19 @@
 ﻿@model MyOwnSite.Models.Post
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
 
-}
 
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4>Create New Post</h4>
-</div>
+
 
 @using (Html.BeginForm())
-    {
+{
 
-    @*@Html.AntiForgeryToken()*@
+
+    @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Post</h4>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4>Create New Post</h4>
+        </div>
         <hr />
         @Html.ValidationSummary(true)
 
@@ -38,17 +36,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                
                 <input type="submit" value="Create" class="btn btn-default" onclick="CreatePost()"/>
             </div>
         </div>
     </div>
 }
-<button onclick="CreatePost()">Create</button>
 
-@*<div>
-    @Html.ActionLink("Back to Posts", "Index")
-</div>*@
+
+
 
 
 <script src="~/Scripts/jquery.validate.min.js"></script>

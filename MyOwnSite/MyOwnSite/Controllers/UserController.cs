@@ -87,7 +87,7 @@ namespace MyOwnSite.Controllers
         {
             ViewBag.User = System.Web.HttpContext.Current.User.Identity.Name;
 
-            return View();
+            return RedirectToAction("Index","Post");
 
         }
 

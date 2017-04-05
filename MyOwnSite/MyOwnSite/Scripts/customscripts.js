@@ -35,16 +35,19 @@ function PopUpCreate() {
 };
 
 function CreatePost() {
-    var data = $("form").serializeArray();
-    console.log(data);
+    event.preventDefault();
+    var data = $("form").serialize();
+   
+    
     
     $.ajax({
         type: 'POST',
         url: '/api/POSTAPI',
-        contentType: "application/json; charset=utf-8",
-        data: $("form").serializeArray()
-        
-    });
+        //url: '/POST/Create',
+        data: data,
+        success: function () { UpdateMain(), $('#myModal').modal('hide'); }
+
+});
 
 
 
@@ -55,14 +58,14 @@ function CreatePost() {
 //    $("#Posts").modal('hide');
 //};
 
-//function UpdateMain() {
-//    $.ajax({
-//        type: 'GET',
-//        url: '/post/PartialPost',
-//        contentType: "application/json; charset=utf-8",
-//        success: function(res) { $('#Posts').html(res) }
-//    });
+function UpdateMain() {
+    $.ajax({
+        type: 'GET',
+        url: '/post/PartialPost',
+        contentType: "application/json; charset=utf-8",
+        success: function(res) { $('.table').html(res) }
+    });
 
 
-//};
+};
 
