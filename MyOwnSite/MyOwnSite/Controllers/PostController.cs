@@ -47,7 +47,7 @@ namespace MyOwnSite.Controllers
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return PartialView(post);
         }
 
         // GET: /Post/Create
@@ -95,7 +95,7 @@ namespace MyOwnSite.Controllers
                 return HttpNotFound();
             }
 
-            return View(post);
+            return PartialView(post);
         }
 
         // POST: /Post/Edit/5
@@ -125,7 +125,7 @@ namespace MyOwnSite.Controllers
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return PartialView(post);
         }
 
         // POST: /Post/Delete/5
@@ -239,7 +239,7 @@ namespace MyOwnSite.Controllers
         {
             var posts = PostService.ListMessageLimit();
 
-            return View(posts);
+            return PartialView(posts);
         }
 
 

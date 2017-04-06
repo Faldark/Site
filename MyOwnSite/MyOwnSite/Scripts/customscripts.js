@@ -4,12 +4,30 @@
 };
 
 
+//function TestPopUp(url) {
+//    $.ajax({
+//        type: 'GET',
+//        url: url,
+//        contentType: "application/json; charset=utf-8",
 
-function PopUpCreate() {
+//        success: function (data) {
+//            $('#dialog-form').html(data);
+//            $('#dialog-form').dialog({
+//                autoOpen: false,
+//                height: 400,
+//                width: 350,
+//                modal: true});
+
+//        }
+//    });
+//};
+
+
+function PopUpCreate(url) {
     var options = { "backdrop": "static", keyboard: true };
     $.ajax({
         type: 'GET',
-        url: '/Post/Create',
+        url: url,
         contentType: "application/json; charset=utf-8",
 
         success: function (data) {
@@ -33,6 +51,42 @@ function PopUpCreate() {
 
 
 };
+
+function PopUpGeneral(url, id) {
+    var options = { "backdrop": "static", keyboard: true };
+    console.log(id);
+    $.ajax({
+        type: 'GET',
+        url: url,
+        data: {'id':id},
+        success: function (data) {
+
+            $('#myModalContent').html(data);
+            $('#myModal').modal(options);
+            $('#myModal').modal('show');
+
+        },
+        error: function () {
+            alert("Dynamic content load failed.");
+        }
+
+
+
+
+    });
+    $("#close").click(function () {
+        $('#myModal').modal('hide');
+    });
+
+
+};
+
+
+
+
+
+
+
 
 function CreatePost() {
     event.preventDefault();
