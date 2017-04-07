@@ -35,7 +35,7 @@ namespace MyOwnSite.Controllers
         {
             var posts = PostService.ListMessageLimit();
 
-            return View(posts);
+            return View();
         }
 
         // GET: /Post/Details/5

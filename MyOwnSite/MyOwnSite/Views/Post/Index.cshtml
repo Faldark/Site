@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MyOwnSite.Models.Post>
+﻿@model MyOwnSite.Models.Post
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,20 +8,20 @@
 
 
 
-@{
+@*@{
     ViewBag.Title = "Posts";
-}
+}*@
 
 
 
 
 
-<body>
+
 
 <h2>Posts</h2>
 
 <p>
-    
+    <a href="#" class ="anchorDetail" onclick="$('#dialog').dialog('open');">Click here to see the popup</a>
     <a href="javascript:void(0);" class="anchorDetail" onclick="PopUpCreate('/post/create')">Create New Post</a>  
 </p>
 
@@ -36,7 +36,7 @@
     
 </div>
 
-<table class="table">
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayName("Author")
@@ -71,9 +71,7 @@
                 @Html.DisplayFor(modelItem => item.CreatedOn)
             </td>
             <td>
-                @*@Html.ActionLink("Edit", "Edit", new {id = item.PostId}) |
-                @Html.ActionLink("Details", "Details", new {id = item.PostId}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.PostId})*@
+                
 
                 <a href="javascript:void(0);" class="anchorDetail" onclick="PopUpGeneral('/post/edit', @item.PostId)">Edit</a>
                 <a href="javascript:void(0);" class="anchorDetail" onclick="PopUpGeneral('/post/details', @item.PostId)">Details</a>
@@ -83,33 +81,13 @@
         </tr>
     }
 
-</table>
-</body>
+</table>*@
+<div id="dialog" class="ui-dialog" style="display: none">
 
-@*<script>
-    $(document).ready({
-        function() {
-            $.UpdateTest();
-
-        }
-
-
-    });
-
-    //function UpdateMain() {
-    //    $.ajax({
-    //        type: 'GET',
-    //        url: '/post/PartialPost',
-    //        contentType: "application/json; charset=utf-8",
-    //        success: function (res) { $('#Posts').html(res) }
-    //    });
-
-
-    //};
+ @Html.Action("Create") 
 
 
 
-
-    
-
-</script>*@
+</div>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

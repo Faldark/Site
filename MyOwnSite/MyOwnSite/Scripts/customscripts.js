@@ -3,6 +3,36 @@
     $("#Posts").hide();
 };
 
+$(function () {
+    $("#dialog").dialog({
+        autoOpen: false,
+        modal: true
+    });
+
+});
+function FunctionForm() {
+
+    console.log("FUNCTIONFORMTIME");
+    //$("#TestForm").validate({
+    //    submitHandler: function() {
+            
+    //            $.ajax({
+    //                type: 'POST',
+    //                url: '/api/POSTAPI',
+    //                //url: '/POST/Create',
+    //                data: data,
+    //                success: function () { UpdateMain(), $('#myModal').modal('hide'); }
+
+    //        });
+
+    //    }
+
+    //});
+};
+
+
+
+
 
 //function TestPopUp(url) {
 //    $.ajax({
@@ -89,19 +119,21 @@ function PopUpGeneral(url, id) {
 
 
 function CreatePost() {
-    event.preventDefault();
+    
+    
     var data = $("form").serialize();
-   
+    event.preventDefault();
+    console.log("From Second");
+    FunctionForm();
     
-    
-    $.ajax({
-        type: 'POST',
-        url: '/api/POSTAPI',
-        //url: '/POST/Create',
-        data: data,
-        success: function () { UpdateMain(), $('#myModal').modal('hide'); }
+//    $.ajax({
+//        type: 'POST',
+//        url: '/api/POSTAPI',
+//        //url: '/POST/Create',
+//        data: data,
+//        success: function () { UpdateMain(), $('#myModal').modal('hide'); }
 
-});
+//});
 
 
 
