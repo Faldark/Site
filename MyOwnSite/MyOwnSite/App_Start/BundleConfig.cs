@@ -12,15 +12,7 @@ namespace MyOwnSite
    "~/Scripts/jquery-ui-{version}.js",
    "~/Scripts/jquery-ui-{version}.min.js"
    ));
-            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
-
-                        "~/Scripts/customscripts.js"
-                        
-                        ));
-           
-           
-
-    
+            
 
 
         }

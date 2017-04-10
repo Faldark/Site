@@ -3,7 +3,7 @@
 
 
 
-@using (Html.BeginForm(new {id="TestForm"}))
+@using (Html.BeginForm(null, null,  FormMethod.Post, new {id="TestForm"}))
 {
 
 
@@ -35,7 +35,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 
-                @*<input type="submit" value="Create" class="btn btn-default" onclick="CreatePost()"/>*@
+                <input type="submit" value="Create" class="btn btn-default" @*onclick="FunctionForm()"*@/>
             </div>
         </div>
     </div>
@@ -44,4 +44,25 @@
 <button onclick="FunctionForm()" class="btn btn-default col-offset-md-2"style="display: inline-block">TestForm</button>
 
 
+<script>
 
+    $("form").submit(function (e) {
+        e.preventDefault();
+    }).validate({
+        rules: {
+            Title: { required: true },
+            Message: { required: true }
+
+        },
+        messages: {
+            Title: { required: "Title field is required" },
+            Message: { required: "Message field is required" }
+
+        },
+        submitHandler: function (form) {
+            FunctionForm(form);
+            return false; //This doesn't prevent the form from submitting.
+        }
+    });
+
+</script>

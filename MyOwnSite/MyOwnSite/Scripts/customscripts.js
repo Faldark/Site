@@ -7,30 +7,29 @@ $(function () {
     $("#dialog").dialog({
         autoOpen: false,
         modal: true
+       
+        
     });
 
 });
+
+
+
 function FunctionForm() {
 
-    console.log("FUNCTIONFORMTIME");
-    //$("#TestForm").validate({
-    //    submitHandler: function() {
-            
-    //            $.ajax({
-    //                type: 'POST',
-    //                url: '/api/POSTAPI',
-    //                //url: '/POST/Create',
-    //                data: data,
-    //                success: function () { UpdateMain(), $('#myModal').modal('hide'); }
-
-    //        });
-
-    //    }
-
-    //});
-};
+    var data = $("form").serialize();
+    
+            $.ajax({
+                type: 'POST',
+                url: '/api/POSTAPI',
+                data: data,
+                success: function () { UpdateMain(), $('#dialog').dialog('close'); }
+            });
+}
+   
 
 
+//, $('#myModal').modal('hide');
 
 
 
@@ -61,7 +60,7 @@ function PopUpCreate(url) {
         contentType: "application/json; charset=utf-8",
 
         success: function (data) {
-            
+
             $('#myModalContent').html(data);
             $('#myModal').modal(options);
             $('#myModal').modal('show');
@@ -70,9 +69,6 @@ function PopUpCreate(url) {
         error: function () {
             alert("Dynamic content load failed.");
         }
-
-        
-
 
     });
     $("#close").click(function () {
@@ -88,7 +84,7 @@ function PopUpGeneral(url, id) {
     $.ajax({
         type: 'GET',
         url: url,
-        data: {'id':id},
+        data: { 'id': id },
         success: function (data) {
 
             $('#myModalContent').html(data);
@@ -112,44 +108,33 @@ function PopUpGeneral(url, id) {
 };
 
 
-
-
-
-
-
-
 function CreatePost() {
-    
-    
-    var data = $("form").serialize();
-    event.preventDefault();
-    console.log("From Second");
-    FunctionForm();
-    
-//    $.ajax({
-//        type: 'POST',
-//        url: '/api/POSTAPI',
-//        //url: '/POST/Create',
-//        data: data,
-//        success: function () { UpdateMain(), $('#myModal').modal('hide'); }
 
-//});
+
+    var data = $("form").serialize();
+    console.log("From Second");
+    
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/POSTAPI',
+            //url: '/POST/Create',
+            data: data,
+            success: function () { UpdateMain(), $('#myModal').modal('hide'); }
+
+    });
 
 
 
 };
 
-//function UpdateTest() {
-
-//    $("#Posts").modal('hide');
-//};
 
 function UpdateMain() {
     $.ajax({
         type: 'GET',
         url: '/post/PartialPost',
         contentType: "application/json; charset=utf-8",
-        success: function(res) { $('.table').html(res) }
+        success: function (res) { $('.table').html(res) }
     });
 
 

@@ -1,5 +1,4 @@
-﻿@model MyOwnSite.Models.Post
-
+﻿@model IEnumerable<MyOwnSite.Models.Post>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
@@ -36,7 +35,7 @@
     
 </div>
 
-@*<table class="table">
+<table class="table">
     <tr>
         <th>
             @Html.DisplayName("Author")
@@ -81,13 +80,10 @@
         </tr>
     }
 
-</table>*@
+</table>
 <div id="dialog" class="ui-dialog" style="display: none">
 
  @Html.Action("Create") 
 
-
-
 </div>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
