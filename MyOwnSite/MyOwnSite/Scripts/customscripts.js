@@ -6,8 +6,11 @@
 $(function () {
     $("#dialog").dialog({
         autoOpen: false,
-        modal: true
-       
+        modal: true,
+        beforeClose: function () {
+            $("form").trigger("reset");
+        }
+        
         
     });
 
