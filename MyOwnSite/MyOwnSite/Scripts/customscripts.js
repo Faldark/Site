@@ -4,7 +4,7 @@
 };
 
 $(function () {
-    $("#dialog").dialog({
+    $(".ui-dialog").dialog({
         autoOpen: false,
         modal: true,
         beforeClose: function () {
@@ -26,89 +26,67 @@ function FunctionForm() {
                 type: 'POST',
                 url: '/api/POSTAPI',
                 data: data,
-                success: function () { UpdateMain(), $('#dialog').dialog('close'); }
+                success: function () { UpdateMain(), $("#createdialog").dialog('close'); }
             });
 }
    
 
 
-//, $('#myModal').modal('hide');
 
-
-
-//function TestPopUp(url) {
+//function PopUpCreate(url) {
+//    var options = { "backdrop": "static", keyboard: true };
 //    $.ajax({
 //        type: 'GET',
 //        url: url,
 //        contentType: "application/json; charset=utf-8",
 
 //        success: function (data) {
-//            $('#dialog-form').html(data);
-//            $('#dialog-form').dialog({
-//                autoOpen: false,
-//                height: 400,
-//                width: 350,
-//                modal: true});
 
+//            $('#myModalContent').html(data);
+//            $('#myModal').modal(options);
+//            $('#myModal').modal('show');
+
+//        },
+//        error: function () {
+//            alert("Dynamic content load failed.");
 //        }
+
 //    });
+//    $("#close").click(function () {
+//        $('#myModal').modal('hide');
+//    });
+
+
 //};
 
+//function PopUpGeneral(url, id) {
+//    var options = { "backdrop": "static", keyboard: true };
+//    console.log(id);
+//    $.ajax({
+//        type: 'GET',
+//        url: url,
+//        data: { 'id': id },
+//        success: function (data) {
 
-function PopUpCreate(url) {
-    var options = { "backdrop": "static", keyboard: true };
-    $.ajax({
-        type: 'GET',
-        url: url,
-        contentType: "application/json; charset=utf-8",
+//            $('#myModalContent').html(data);
+//            $('#myModal').modal(options);
+//            $('#myModal').modal('show');
 
-        success: function (data) {
-
-            $('#myModalContent').html(data);
-            $('#myModal').modal(options);
-            $('#myModal').modal('show');
-
-        },
-        error: function () {
-            alert("Dynamic content load failed.");
-        }
-
-    });
-    $("#close").click(function () {
-        $('#myModal').modal('hide');
-    });
-
-
-};
-
-function PopUpGeneral(url, id) {
-    var options = { "backdrop": "static", keyboard: true };
-    console.log(id);
-    $.ajax({
-        type: 'GET',
-        url: url,
-        data: { 'id': id },
-        success: function (data) {
-
-            $('#myModalContent').html(data);
-            $('#myModal').modal(options);
-            $('#myModal').modal('show');
-
-        },
-        error: function () {
-            alert("Dynamic content load failed.");
-        }
+//        },
+//        error: function () {
+//            alert("Dynamic content load failed.");
+//        }
 
 
 
 
-    });
-    $("#close").click(function () {
-        $('#myModal').modal('hide');
-    });
+//    });
+//    $("#close").click(function () {
+//        $('#myModal').modal('hide');
+//    });
 
 
-};
+//};
 
 
 function CreatePost() {
