@@ -19,14 +19,10 @@ namespace MyOwnSite.Controllers
 {
     public class PostApiController : ApiController
     {
+        
+        
         [Dependency]
-    //123321TEST
-    //9999
-<<<<<<< HEAD
-    //666
-=======
-    //666777
->>>>>>> Test1
+
         public IPostService PostService { get; set; }
 
         [Dependency]
