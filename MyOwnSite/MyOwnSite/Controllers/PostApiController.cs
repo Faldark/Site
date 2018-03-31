@@ -22,7 +22,6 @@ namespace MyOwnSite.Controllers
         [Dependency]
     //123321TEST
     //9999
-    //66677778888
         public IPostService PostService { get; set; }
 
         [Dependency]
